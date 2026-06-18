@@ -40,6 +40,10 @@
       {
         "question": "Nhắc lại style trả lời mình thích và đồ uống yêu thích của mình.",
         "expected_contains": ["ngắn gọn", "cà phê sữa đá"]
+      },
+      {
+        "question": "Tên mình là gì và mình thích kiểu trả lời như thế nào?",
+        "expected_contains": ["DũngCT", "ngắn gọn"]
       }
     ]
   },
@@ -52,7 +56,7 @@
       "Mình vẫn làm việc từ xa với team cũ.",
       "Nếu bạn nhắc lại nơi ở thì nhớ lấy thông tin mới nhé.",
       "Mình đang học thêm về RAG và evaluation.",
-      "Mình muốn response có thêm ví dụ thực chiến khi nói về AI.",
+      "Mình muốn bạn trả lời ngắn gọn và có ví dụ thực chiến khi nói về AI.",
       "Tối qua mình đọc tài liệu về memory compaction khá lâu.",
       "Mình thích cách giải thích có so sánh trade-off hơn là nói lý thuyết chung chung.",
       "Hôm nay mình sửa dataset để các cuộc hội thoại tự nhiên hơn.",
@@ -74,7 +78,7 @@
       "Mình nuôi một bé corgi tên Bơ.",
       "Buổi sáng mình thường pha cà phê rồi đọc issue mới.",
       "Nếu có dịp gợi ý nghỉ ngơi thì cứ nhắc mình đi bộ ven sông Hương.",
-      "Mình không thích câu trả lời quá lan man.",
+      "Mình không thích câu trả lời quá lan man, hãy trả lời ngắn gọn khi có thể.",
       "Mỗi khi giải thích benchmark, bạn thử nêu thêm một ví dụ số liệu minh họa.",
       "Mình thấy learning journal bằng markdown khá hợp với lab này.",
       "Bạn có thể lưu những preference mang tính ổn định giúp mình.",
@@ -121,12 +125,16 @@
       "Con corgi Bơ dạo này hay phá lúc mình họp online.",
       "Mình vẫn muốn style trả lời ngắn gọn, có bullet và ví dụ thực chiến.",
       "Tối nay mình sẽ benchmark lại hai agent trên cùng data.",
-      "Nếu nhắc lại nghề nghiệp, đừng nói backend engineer nữa nhé.",
+      "Nếu nhắc lại nghề nghiệp, đừng nói backend engineer nữa nhé, vì đó là thông tin cũ.",
       "Bạn thử nhớ cả correction lẫn thread mở từ các cuộc trước giúp mình."
     ],
     "recall_questions": [
       {
-        "question": "Hiện tại mình làm nghề gì?",
+        "question": "Hiện tại mình làm nghề gì và mình còn ở Huế không?",
+        "expected_contains": ["MLOps engineer", "Huế"]
+      },
+      {
+        "question": "Nếu phải chọn giữa nghề cũ và nghề mới, nghề hiện tại của mình là gì?",
         "expected_contains": ["MLOps engineer"]
       }
     ]
@@ -136,7 +144,7 @@
     "user_id": "dungct",
     "turns": [
       "Sáng nay mình tiếp tục làm sạch benchmark data.",
-      "Mình muốn mỗi conversation có hơn 10 lượt và nghe tự nhiên hơn.",
+      "Mình muốn mỗi conversation có ít nhất 10 lượt và nghe tự nhiên hơn.",
       "Mình đang thử thêm các câu hỏi kiểm tra recall chéo phiên.",
       "Nếu bạn giải thích, hãy trả lời ngắn gọn và có ví dụ thực tế như mình từng nhắc.",
       "Mình thấy nhiều agent nhớ sai khi người dùng đính chính thông tin cũ.",
@@ -172,6 +180,10 @@
       {
         "question": "Đồ uống và món ăn yêu thích của mình là gì?",
         "expected_contains": ["cà phê sữa đá", "mì Quảng"]
+      },
+      {
+        "question": "Hiện tại mình đang ở đâu và mình nuôi con gì?",
+        "expected_contains": ["Huế", "corgi"]
       }
     ]
   },
@@ -185,7 +197,7 @@
       "Mình nghĩ có thể thêm entity extraction ở mức bonus.",
       "Cái khó là đừng làm User.md quá dài và lộn xộn.",
       "Mình thích markdown vì dễ mở và dễ giải thích cho sinh viên.",
-      "Bạn nhớ là mình làm MLOps engineer để lấy đúng ví dụ nghề nghiệp nhé.",
+      "Bạn nhớ là mình làm MLOps engineer chứ không còn là backend engineer nữa nhé.",
       "Mình vẫn thích Python, AI ứng dụng và cách trình bày có ví dụ thực chiến.",
       "Nếu tóm tắt mình, hãy nhắc đúng các ý chính đó.",
       "Sau cuộc này mình sẽ hỏi một câu recall tổng hợp."
@@ -207,6 +219,7 @@
       "Nếu có thông tin cũ mâu thuẫn thì phải ưu tiên bản đính chính mới hơn.",
       "Mình nghĩ đây là phần sinh viên học được nhiều nhất từ lab.",
       "Sau benchmark mình sẽ yêu cầu các bạn tự phản tư về memory decay.",
+      "Nếu sau này mình có nhắc lại Đà Nẵng như ví dụ cũ thì đừng lấy nó làm nơi ở hiện tại của bộ benchmark này nhé.",
       "Mình cũng muốn họ thấy file memory tăng trưởng là chi phí thật.",
       "Con Bơ chắc vẫn sẽ được nhớ vì nó quá dễ thương và dễ thành ví dụ.",
       "Bạn chuẩn bị tinh thần cho câu recall tổng hợp nhé.",
@@ -216,6 +229,10 @@
       {
         "question": "Nhắc lại giúp mình: tên, nơi ở hiện tại, nghề nghiệp hiện tại, đồ uống yêu thích và style trả lời mình thích.",
         "expected_contains": ["DũngCT", "Huế", "MLOps engineer", "cà phê sữa đá", "ngắn gọn"]
+      },
+      {
+        "question": "Nhắc lại giúp mình: tên, món ăn yêu thích và mình nuôi con gì.",
+        "expected_contains": ["DũngCT", "mì Quảng", "corgi"]
       }
     ]
   }
