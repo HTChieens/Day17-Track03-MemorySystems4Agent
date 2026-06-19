@@ -25,8 +25,18 @@ class ProviderConfig:
 
 def normalize_provider(value: str) -> str:
     """Student TODO: map aliases like `anthorpic` -> `anthropic`."""
-
-    raise NotImplementedError
+    val = value.strip().lower()
+    mapping = {
+        "anthorpic": "anthropic",
+        "anthropic": "anthropic",
+        "openai": "openai",
+        "gemini": "gemini",
+        "google": "gemini",
+        "ollama": "ollama",
+        "openrouter": "openrouter",
+        "custom": "custom"
+    }
+    return mapping.get(val, val)
 
 
 def build_chat_model(config: ProviderConfig):
@@ -40,5 +50,61 @@ def build_chat_model(config: ProviderConfig):
     - `ollama` -> `ChatOllama`
     - `openrouter` -> `ChatOpenRouter`
     """
+    provider = normalize_provider(config.provider)
 
-    raise NotImplementedError
+    if provider == "openai":
+        from langchain_openai import ChatOpenAI
+        return ChatOpenAI(
+            model=config.model_name,
+            temperature=config.temperature,
+            api_key=config.api_key,
+        )
+    elif provider == "custom":
+        from langchain_openai import ChatOpenAI
+        return ChatOpenAI(
+            model=config.model_name,
+            temperature=config.temperature,
+            api_key=config.api_key,
+            base_url=config.base_url,
+        )
+    elif provider == "gemini":
+        from langchain_google_genai import ChatGoogleGenerativeAI
+        return ChatGoogleGenerativeAI(
+            model=config.model_name,
+            temperature=config.temperature,
+            google_api_key=config.api_key,
+        )
+    elif provider == "anthropic":
+        from langchain_anthropic import ChatAnthropic
+        return ChatAnthropic(
+            model=config.model_name,
+            temperature=config.temperature,
+            api_key=config.api_key,
+        )
+    elif provider == "ollama":
+        from langchain_ollama import ChatOllama
+        return ChatOllama(
+            model=config.model_name,
+            temperature=config.temperature,
+            base_url=config.base_url,
+        )
+    elif provider == "openrouter":
+        try:
+            # Try importing langchain_openrouter if available
+            from langchain_openrouter import ChatOpenRouter
+            return ChatOpenRouter(
+                model=config.model_name,
+                temperature=config.temperature,
+                api_key=config.api_key,
+            )
+        except ImportError:
+            from langchain_openai import ChatOpenAI
+            return ChatOpenAI(
+                model=config.model_name,
+                temperature=config.temperature,
+                api_key=config.api_key,
+                base_url=config.base_url,
+            )
+    else:
+        raise ValueError(f"Unsupported provider: {provider}")
+
